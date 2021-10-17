@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { Readability } from '@mozilla/readability';
 import * as JSDOM from 'jsdom'
 import DOMPurify from 'isomorphic-dompurify';
@@ -11,8 +14,25 @@ import router from '@koa/router';
 const app = new koa();
 const r = new router();
 
+const _keys = process.env.ALLOWED_KEYS?.split(',') ?? [];
+
+const protect: koa.Middleware<koa.DefaultState, koa.DefaultContext> = async (ctx, next) => {
+  const { key } = ctx.query;
+  if (!key) {
+    ctx.throw(403, 'Api key needed');
+  }
+  if (!_keys.find(k => k === key)) {
+    ctx.throw(403, 'Unauthorized');
+  }
+  await next();
+}
+
 r.get('/', async (ctx, next) => {
   ctx.body = { msg: 'hello world!' };
+  await next();
+})
+r.get('/article/:id', protect, async (ctx, next) => {
+  ctx.body = { msg: `test route ${ctx.params['id']}` }
   await next();
 })
 

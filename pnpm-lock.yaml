@@ -11,6 +11,7 @@ specifiers:
   '@types/koa__router': ^8.0.8
   '@types/node': ^16.11.1
   cross-fetch: ^3.1.4
+  dotenv: ^10.0.0
   isomorphic-dompurify: ^0.15.0
   jsdom: ^18.0.0
   koa: ^2.13.3
@@ -24,6 +25,7 @@ dependencies:
   '@mozilla/readability': 0.4.1
   '@types/koa-json': 2.0.20
   cross-fetch: 3.1.4
+  dotenv: 10.0.0
   isomorphic-dompurify: 0.15.0
   jsdom: 18.0.0
   koa: 2.13.3
@@ -509,6 +511,11 @@ packages:
 
   /dompurify/2.3.3:
     resolution: {integrity: sha512-dqnqRkPMAjOZE0FogZ+ceJNM2dZ3V/yNOuFB7+39qpO93hHhfRpHw3heYQC7DPK9FqbQTfBKUJhiSfz4MvXYwg==}
+    dev: false
+
+  /dotenv/10.0.0:
+    resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
+    engines: {node: '>=10'}
     dev: false
 
   /dynamic-dedupe/0.3.0:
