@@ -4,8 +4,8 @@ import logger from 'koa-logger'
 import json from 'koa-json'
 import bodyParser from 'koa-bodyparser'
 import router from '@koa/router'
-import articleHandler from './handlers/article-handler'
-import { Article } from './models/article'
+import articleHandler from 'handlers/article-handler'
+import { Article } from 'models/article'
 
 dotenv.config();
 
@@ -39,7 +39,7 @@ app.use(logger());
 app.use(r.routes()).use(r.allowedMethods());
 
 
-Article.sync({ force: true }).then(() => {
+Article.sync({ alter: true }).then(() => {
   app.listen(process.env.PORT, () => {
     console.log(`listening on port ${process.env.PORT}`);
   });

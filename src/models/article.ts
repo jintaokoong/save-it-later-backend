@@ -9,7 +9,8 @@ export class Article extends Model {
 
 Article.init({
   id: { type: DataTypes.UUIDV4, primaryKey: true, defaultValue: S.UUIDV4, },
-  title: { type: DataTypes.STRING},
+  url: { type: DataTypes.STRING },
+  title: { type: DataTypes.STRING },
   content: { type: DataTypes.STRING },
   textContent: { type: DataTypes.STRING },
 }, {

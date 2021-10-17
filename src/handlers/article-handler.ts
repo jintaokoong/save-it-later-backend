@@ -3,7 +3,7 @@ import fetch from 'cross-fetch'
 import DOMPurify from 'isomorphic-dompurify'
 import * as JSDOM from 'jsdom'
 import { Readability } from '@mozilla/readability'
-import { Article } from '../models/article'
+import { Article } from 'models/article'
 
 const list: koa.Middleware = async (ctx, next) => {
   ctx.body = await Article.findAll({
@@ -55,6 +55,7 @@ const post: koa.Middleware = async (ctx, next) => {
     ctx.status = 200;
     ctx.body = {
       id: result.getDataValue('id'),
+      url: url,
       title: result.getDataValue('title'),
       textContent: result.getDataValue('textContent'),
     }
