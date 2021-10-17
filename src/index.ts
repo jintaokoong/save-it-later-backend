@@ -1,5 +1,6 @@
 import { Readability } from '@mozilla/readability';
 import * as JSDOM from 'jsdom'
+import DOMPurify from 'isomorphic-dompurify';
 import fetch from 'cross-fetch';
 import * as fs from 'fs'
 
@@ -8,14 +9,15 @@ const main = () => {
   fetch(url)
     .then(res => res.text())
     .then(t => {
-    const doc = new JSDOM.JSDOM(t, {
+    const purified = DOMPurify.sanitize(t);
+    const doc = new JSDOM.JSDOM(purified, {
       url: url
     });
     const reader = new Readability(doc.window.document);
     const article = reader.parse();
     if (article) {
-      fs.writeFile('content.html', article.content, (err) => {
-        console.error(err);
+      fs.writeFile('out/content.html', article.content, (err) => {
+        err && console.error(err);
       });
     }
   })
