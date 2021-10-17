@@ -9,6 +9,7 @@ import * as fs from 'fs';
 import koa from 'koa';
 import logger from 'koa-logger';
 import json from 'koa-json';
+import bodyParser from 'koa-bodyparser'
 import router from '@koa/router';
 
 const app = new koa();
@@ -35,13 +36,19 @@ r.get('/article/:id', protect, async (ctx, next) => {
   ctx.body = { msg: `test route ${ctx.params['id']}` }
   await next();
 })
+r.post('/article', protect, async (ctx, next) => {
+  ctx.status = 200;
+  console.log(ctx.request.body);
+  await next();
+})
 
 app.use(json());
+app.use(bodyParser());
 app.use(logger());
 app.use(r.routes()).use(r.allowedMethods());
 
-app.listen(3000, () => {
-  console.log('listening on port 3000');
+app.listen(process.env.PORT, () => {
+  console.log(`listening on port ${process.env.PORT}`);
 });
 
 const main = () => {
