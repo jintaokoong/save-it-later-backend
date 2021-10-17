@@ -5,7 +5,7 @@ import fetch from 'cross-fetch';
 import * as fs from 'fs'
 
 const main = () => {
-  const url ='https://www.cincainews.com/news/tech-gadgets/2021/10/14/tm-stops-offering-public-ip-for-customers-on-unifi-100mbps-plan-and-below/2013227';
+  const url ='https://levelup.gitconnected.com/how-to-properly-set-up-express-with-typescript-1b52570677c9';
   fetch(url)
     .then(res => res.text())
     .then(t => {
@@ -21,7 +21,10 @@ const main = () => {
       });
     }
   })
-
 }
 
-main()
+const run = () => {
+  return;
+}
+
+run()
