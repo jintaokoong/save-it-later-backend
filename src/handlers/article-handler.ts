@@ -49,13 +49,14 @@ const post: koa.Middleware = async (ctx, next) => {
     const article = reader.parse();
     const result = await Article.create({
       title: article?.excerpt,
+      url: url,
       content: article?.content,
       textContent: article?.textContent,
     })
     ctx.status = 200;
     ctx.body = {
       id: result.getDataValue('id'),
-      url: url,
+      url: result.getDataValue('url'),
       title: result.getDataValue('title'),
       textContent: result.getDataValue('textContent'),
     }
