@@ -12,6 +12,8 @@ import json from 'koa-json';
 import bodyParser from 'koa-bodyparser'
 import router from '@koa/router';
 
+import articleHandler from './handlers/article-handler';
+
 const app = new koa();
 const r = new router();
 
@@ -32,15 +34,8 @@ r.get('/', async (ctx, next) => {
   ctx.body = { msg: 'hello world!' };
   await next();
 })
-r.get('/article/:id', protect, async (ctx, next) => {
-  ctx.body = { msg: `test route ${ctx.params['id']}` }
-  await next();
-})
-r.post('/article', protect, async (ctx, next) => {
-  ctx.status = 200;
-  console.log(ctx.request.body);
-  await next();
-})
+r.get('/article/:id', protect, articleHandler.get)
+r.post('/article', protect, articleHandler.post)
 
 app.use(json());
 app.use(bodyParser());
