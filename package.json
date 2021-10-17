@@ -32,6 +32,8 @@
     "koa": "^2.13.3",
     "koa-bodyparser": "^4.3.0",
     "koa-json": "^2.0.2",
-    "koa-logger": "^3.2.1"
+    "koa-logger": "^3.2.1",
+    "sequelize": "^6.7.0",
+    "sqlite3": "^5.0.2"
   }
 }
