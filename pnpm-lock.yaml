@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@koa/cors': ^3.1.0
   '@koa/router': ^10.1.1
   '@mozilla/readability': ^0.4.1
   '@types/express': ^4.17.13
@@ -9,6 +10,7 @@ specifiers:
   '@types/koa-bodyparser': ^4.3.3
   '@types/koa-json': ^2.0.20
   '@types/koa-logger': ^3.1.2
+  '@types/koa__cors': ^3.0.3
   '@types/koa__router': ^8.0.8
   '@types/node': ^16.11.1
   cross-fetch: ^3.1.4
@@ -25,6 +27,7 @@ specifiers:
   typescript: ^4.4.4
 
 dependencies:
+  '@koa/cors': 3.1.0
   '@koa/router': 10.1.1
   '@mozilla/readability': 0.4.1
   '@types/koa-json': 2.0.20
@@ -45,12 +48,20 @@ devDependencies:
   '@types/koa': 2.13.4
   '@types/koa-bodyparser': 4.3.3
   '@types/koa-logger': 3.1.2
+  '@types/koa__cors': 3.0.3
   '@types/koa__router': 8.0.8
   '@types/node': 16.11.1
   ts-node-dev: 1.1.8_typescript@4.4.4
   typescript: 4.4.4
 
 packages:
+
+  /@koa/cors/3.1.0:
+    resolution: {integrity: sha512-7ulRC1da/rBa6kj6P4g2aJfnET3z8Uf3SWu60cjbtxTA5g8lxRdX/Bd2P92EagGwwAhANeNw8T8if99rJliR6Q==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      vary: 1.1.2
+    dev: false
 
   /@koa/router/10.1.1:
     resolution: {integrity: sha512-ORNjq5z4EmQPriKbR0ER3k4Gh7YGNhWDL7JBW+8wXDrHLbWYKYSJaOJ9aN06npF5tbTxe2JBOsurpJDAvjiXKw==}
@@ -179,6 +190,12 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
       '@types/node': 16.11.1
+
+  /@types/koa__cors/3.0.3:
+    resolution: {integrity: sha512-74Xb4hJOPGKlrQ4PRBk1A/p0gfLpgbnpT0o67OMVbwyeMXvlBN+ZCRztAAmkKZs+8hKbgMutUlZVbA52Hr/0IA==}
+    dependencies:
+      '@types/koa': 2.13.4
+    dev: true
 
   /@types/koa__router/8.0.8:
     resolution: {integrity: sha512-9pGCaDtzCsj4HJ8HmGuqzk8+s57sPj4njWd08GG5o92n5Xp9io2snc40CPpXFhoKcZ8OKhuu6ht4gNou9e1C2w==}

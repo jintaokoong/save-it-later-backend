@@ -4,6 +4,7 @@ import logger from 'koa-logger'
 import json from 'koa-json'
 import bodyParser from 'koa-bodyparser'
 import router from '@koa/router'
+import cors from '@koa/cors';
 import articleHandler from 'handlers/article-handler'
 import { Article } from 'models/article'
 
@@ -33,6 +34,7 @@ r.get('/api/article', protect, articleHandler.list)
 r.get('/api/article/:id', protect, articleHandler.get)
 r.post('/api/article', protect, articleHandler.post)
 
+app.use(cors());
 app.use(json());
 app.use(bodyParser());
 app.use(logger());
