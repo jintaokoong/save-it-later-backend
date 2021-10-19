@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "pnpx tsc",
+    "deploy": "cp .env dist; cp package.json dist",
     "start": "NODE_PATH=./dist node ./dist/index.js",
     "dev": "NODE_PATH=./src ts-node-dev src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
