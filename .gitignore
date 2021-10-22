@@ -1,6 +1,9 @@
 # IDE
 .idea
 
+# secret
+**/service-info.json
+
 # Logs
 logs
 *.log

@@ -1,7 +1,7 @@
 import S, { Sequelize, DataTypes, Model } from 'sequelize'
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: 'readability.sqlite',
+  storage: '/data/readability/database.sqlite',
 });
 
 export class Article extends Model {
@@ -13,6 +13,7 @@ Article.init({
   title: { type: DataTypes.STRING },
   content: { type: DataTypes.STRING },
   textContent: { type: DataTypes.STRING },
+  createdBy: { type: DataTypes.STRING, allowNull: false }
 }, {
   sequelize: sequelize,
   timestamps: true,

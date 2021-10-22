@@ -8,6 +8,7 @@ import { Article } from 'models/article'
 const list: koa.Middleware = async (ctx, next) => {
   ctx.body = await Article.findAll({
     attributes: { exclude: ['content'] },
+    where: { createdBy: ctx.state.uid },
   })
   await next()
 }
@@ -15,7 +16,7 @@ const list: koa.Middleware = async (ctx, next) => {
 const get: koa.Middleware = async (ctx, next) => {
   const { id } = ctx.params
   const article = await Article.findByPk(id)
-  if (!article) {
+  if (!article || article.getDataValue('createdBy') !== ctx.state.uid) {
     ctx.status = 404
     ctx.body = {
       message: 'article not found',
@@ -52,6 +53,7 @@ const post: koa.Middleware = async (ctx, next) => {
       url: url,
       content: article?.content,
       textContent: article?.textContent,
+      createdBy: ctx.state.uid,
     })
     ctx.status = 200
     ctx.body = {
@@ -59,6 +61,7 @@ const post: koa.Middleware = async (ctx, next) => {
       url: result.getDataValue('url'),
       title: result.getDataValue('title'),
       textContent: result.getDataValue('textContent'),
+      createdBy: result.getDataValue('createdBy'),
     }
   } catch (err) {
     console.error(err)
